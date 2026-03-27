@@ -77,7 +77,7 @@ variable "global_secondary_indexes" {
     read_capacity   = optional(number, 5)
     write_capacity  = optional(number, 5)
   }))
-  default = []
+  default = []ddd
 }
 
 variable "ttl_attribute" {
