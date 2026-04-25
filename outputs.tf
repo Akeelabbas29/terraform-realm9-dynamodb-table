@@ -32,3 +32,30 @@ output "encryption_type" {
   description = "Encryption type"
   value       = var.kms_key_arn != "" ? "KMS (customer-managed)" : "AWS-managed"
 }
+
+output "region" {
+  description = "AWS region"
+  value       = var.aws_region
+}
+
+output "iam_user_name" {
+  description = "IAM user with table-scoped access"
+  value       = aws_iam_user.table_user.name
+}
+
+output "iam_user_arn" {
+  description = "ARN of the IAM user"
+  value       = aws_iam_user.table_user.arn
+}
+
+output "access_key_id" {
+  description = "Access key ID for the IAM user — use for AWS CLI verification"
+  value       = aws_iam_access_key.table_user.id
+  sensitive   = true
+}
+
+output "secret_access_key" {
+  description = "Secret access key for the IAM user — use for AWS CLI verification"
+  value       = aws_iam_access_key.table_user.secret
+  sensitive   = true
+}
